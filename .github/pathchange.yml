@@ -3,7 +3,7 @@ name: Trigger on Path Changes
 on:
   push:
     paths:
-      - 'src/**/*.txt'  
+      - '**/*.txt'  
       
 jobs:
   echo-hello-world:  
