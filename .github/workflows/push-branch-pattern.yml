@@ -3,10 +3,13 @@ name: Push Tag Event
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*'  # Trigger on tags like v1.0, v2.0, etc.
 
 jobs:
-  echo-hello-world:
-    runs-on: ubuntu-latest
+  echo-hello-world:  # Define the job name
+    runs-on: ubuntu-latest  # This specifies the runner to use
+
     steps:
-      - run: echo "hello-world"
+      # Step 1: Run a simple command to echo "hello-world"
+      - name: Echo hello-world
+        run: echo "hello-world"
