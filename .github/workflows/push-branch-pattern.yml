@@ -5,3 +5,14 @@ on:
     branches:
       - 'main'        # Trigger on pushes to the 'main' branch
       - 'feature/*'   # Trigger on pushes to any branch starting with 'feature/'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # This defines the operating system for the workflow to run on (Ubuntu in this case)
+
+    steps:
+      - name: Display branch name
+        run: echo "This workflow is triggered by a push to the branch: $GITHUB_REF"
+        
+      - name: Run tests
+        run: echo "You can add your build/test commands here."
