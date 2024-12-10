@@ -10,4 +10,4 @@ jobs:
   echo-hello-world:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello-world - Runner OS $RUNNER_OS
+      - run: echo "hello-world"
