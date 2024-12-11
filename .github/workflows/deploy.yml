@@ -1,0 +1,35 @@
+name: Deployment Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - feature
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set environment variables
+        run: |
+          echo "VERSION=v1.2.0" >> $GITHUB_ENV
+          
+          # Set the environment URL based on the branch
+          if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+            echo "API_URL=https://api.example.com" >> $GITHUB_ENV
+            echo "DEPLOY_MESSAGE=Deploying to Production" >> $GITHUB_ENV
+          elif [[ $GITHUB_REF == 'refs/heads/develop' ]]; then
+            echo "API_URL=https://staging-api.example.com" >> $GITHUB_ENV
+            echo "DEPLOY_MESSAGE=Deploying to Staging" >> $GITHUB_ENV
+          fi
+
+      - name: Print deployment message
+        run: |
+          echo $DEPLOY_MESSAGE
+
+      - name: Deploy Application
+        run: |
+          echo "Deploying version $VERSION to $API_URL"
