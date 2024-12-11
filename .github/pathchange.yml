@@ -1,0 +1,14 @@
+name: Trigger on Path Changes
+
+on:
+  push:
+    paths:
+      - '**/*.txt'  
+      
+jobs:
+  echo-hello-world:  
+    runs-on: ubuntu-latest  # This specifies the runner to use
+
+    steps:
+      - name: Echo hello-world
+        run: echo "hello-world"
